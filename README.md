@@ -1,2 +1,2 @@
-# Payment
-Every payment providers will implement here
+# Payments
+Every Payments providers will implement here
