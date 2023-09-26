@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Choose>
+    <When Condition="$(SolutionFileName.Contains('Net7'))">
+      <PropertyGroup>
+        <TargetFrameworks>net7.0</TargetFrameworks>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyMicroservices.Payments\EasyMicroservices.Payments.csproj" />
+  </ItemGroup>
+
+</Project>

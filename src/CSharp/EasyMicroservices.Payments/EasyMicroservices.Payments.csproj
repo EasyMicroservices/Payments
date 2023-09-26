@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <Choose>
+    <When Condition="$(SolutionFileName.Contains('Net7'))">
+      <PropertyGroup>
+        <TargetFrameworks>net7.0</TargetFrameworks>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net45</TargetFrameworks>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  
+  <PropertyGroup>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Authors>EasyMicroservices</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.0.1</Version>
+    <Description>Payments banks.</Description>
+    <Copyright>EasyMicroservices@gmail.com</Copyright>
+    <PackageTags>payments,payment,bank,banks</PackageTags>
+    <PackageProjectUrl>https://github.com/EasyMicroservices/Payments</PackageProjectUrl>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.Payments.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyMicroservices.Domain" Version="0.0.0.1" />
+    <PackageReference Include="EasyMicroservices.ServiceContracts" Version="0.0.0.16" />
+    <PackageReference Include="EasyMicroservices.Utilities" Version="0.0.0.12" />
+  </ItemGroup>
+
+</Project>
