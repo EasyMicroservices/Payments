@@ -1,20 +1,16 @@
-﻿using EasyMicroservices.Payments.Interfaces;
-using EasyMicroservices.Payments.PayPal.Providers;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EasyMicroservices.Payments.PayPal.Providers;
 
 namespace EasyMicroservices.Payments.Tests.Providers
 {
     public class PayPalProviderTest : BasePaymentProviderTest
     {
-        public PayPalProviderTest() : base(new PayPalProvider("http://localhost:1060"))
+        public PayPalProviderTest() : base(1060, new PayPalProvider("http://localhost:1060"))
         {
         }
 
         protected override void AppendServices()
         {
-            
+
             AppendService($@"POST /v2/checkout/orders HTTP/1.1
 *RequestSkipBody*
 ",

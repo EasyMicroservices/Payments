@@ -7,24 +7,26 @@ namespace EasyMicroservices.Payments.VirtualServerForTests
 {
     public class PaymentsVirtualTestManager
     {
-        static HashSet<int> InitializedPorts = new HashSet<int>();
-        static readonly ResourceManager ResourceManager = new ResourceManager();
+        static Dictionary<int, ResourceManager> InitializedPorts = new Dictionary<int, ResourceManager>();
         public int CurrentPortNumber { get; set; }
 
         public async Task<bool> OnInitialize(int portNumber)
         {
             CurrentPortNumber = portNumber;
-            if (InitializedPorts.Contains(portNumber))
+            if (InitializedPorts.ContainsKey(portNumber))
                 return false;
-            InitializedPorts.Add(portNumber);
-            HttpHandler httpHandler = new HttpHandler(ResourceManager);
+            InitializedPorts[portNumber] = new ResourceManager();
+            HttpHandler httpHandler = new HttpHandler(InitializedPorts[portNumber]);
             await httpHandler.Start(portNumber);
             return true;
         }
 
         public void AppendService(int port, string request, string body)
         {
-            ResourceManager.Append(request, body);
+            if (InitializedPorts.TryGetValue(port, out ResourceManager resource))
+                resource.Append(request, body);
+            else
+                throw new KeyNotFoundException(port.ToString());
         }
     }
 }

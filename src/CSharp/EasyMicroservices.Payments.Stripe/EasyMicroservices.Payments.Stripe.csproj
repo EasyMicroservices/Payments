@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  
+
   <PropertyGroup>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
@@ -7,13 +7,13 @@
     <Version>0.0.0.1</Version>
     <Description>Payments banks.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
-    <PackageTags>payments,payment,bank,banks,paypal</PackageTags>
+    <PackageTags>payments,payment,bank,banks,stripe</PackageTags>
     <PackageProjectUrl>https://github.com/EasyMicroservices/Payments</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.Payments.PayPal.xml</DocumentationFile>
+    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.Payments.Stripe.xml</DocumentationFile>
   </PropertyGroup>
-  
+
   <Choose>
     <When Condition="$(SolutionFileName.Contains('Net7'))">
       <PropertyGroup>
@@ -26,6 +26,10 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
+
+  <ItemGroup>
+    <PackageReference Include="Stripe.net" Version="42.7.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EasyMicroservices.Payments\EasyMicroservices.Payments.csproj" />
