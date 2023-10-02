@@ -13,15 +13,29 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.Payments.PayPal.Providers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class PayPalProvider : BasePaymentsProvider
     {
         string BaseUrl { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="baseUrl"></param>
         public PayPalProvider(string baseUrl)
         {
             BaseUrl = baseUrl;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static HttpClient HttpClient = new HttpClient();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="paymentOrderRequest"></param>
+        /// <returns></returns>
         public override async Task<MessageContract<PaymentOrderResponse>> CreateOrderAsync(PaymentOrderRequest paymentOrderRequest)
         {
             Dictionary<string, string> configurationMap = new Dictionary<string, string>
