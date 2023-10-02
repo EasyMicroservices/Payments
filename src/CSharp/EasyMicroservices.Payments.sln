@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.Payments.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.Payments.VirtualServerForTests", "EasyMicroservices.Payments.VirtualServerForTests\EasyMicroservices.Payments.VirtualServerForTests.csproj", "{7A34CB55-FFE8-4D68-A233-E16C39E91CFE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.Payments.PayPal", "EasyMicroservices.Payments.Paypal\EasyMicroservices.Payments.PayPal.csproj", "{E719EFFC-9F5E-4076-B4B0-51596EE59025}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.Payments.PayPal", "EasyMicroservices.Payments.PayPal\EasyMicroservices.Payments.PayPal.csproj", "{E719EFFC-9F5E-4076-B4B0-51596EE59025}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyMicroservices.Payments.Stripe", "EasyMicroservices.Payments.Stripe\EasyMicroservices.Payments.Stripe.csproj", "{48C48037-EF75-46DC-ACAB-C25348824437}"
 EndProject
