@@ -46,7 +46,7 @@ Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 Content-Length: 0
 
             {{""id"":""prod_OkDGJYSWbbrByC"",""object"":""product"",""active"":true,""created"":1696240502,""default_price"":""price_1NsdvsdveweT6kDcHTUC"",""description"":null,""features"":[],""images"":[],""livemode"":false,""metadata"":{{}},""name"":""Test"",""package_dimensions"":null,""shippable"":null,""statement_descriptor"":null,""tax_code"":null,""type"":""service"",""unit_label"":null,""updated"":1696240502,""url"":null}}");
-            
+
             AppendService($@"POST /v1/prices HTTP/1.1
 *RequestSkipBody*",
 
