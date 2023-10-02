@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyMicroservices.Payments.Paypal\EasyMicroservices.Payments.PayPal.csproj" />
+    <ProjectReference Include="..\EasyMicroservices.Payments.PayPal\EasyMicroservices.Payments.PayPal.csproj" />
     <ProjectReference Include="..\EasyMicroservices.Payments.Stripe\EasyMicroservices.Payments.Stripe.csproj" />
     <ProjectReference Include="..\EasyMicroservices.Payments.VirtualServerForTests\EasyMicroservices.Payments.VirtualServerForTests.csproj" />
     <ProjectReference Include="..\EasyMicroservices.Payments\EasyMicroservices.Payments.csproj" />
