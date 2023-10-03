@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EasyMicroservices.Payments.Stripe.Providers
@@ -52,8 +53,9 @@ namespace EasyMicroservices.Payments.Stripe.Providers
         /// 
         /// </summary>
         /// <param name="paymentOrderRequest"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public override async Task<MessageContract<PaymentOrderResponse>> CreateOrderAsync(PaymentOrderRequest paymentOrderRequest)
+        public override async Task<MessageContract<PaymentOrderResponse>> CreateOrderAsync(PaymentOrderRequest paymentOrderRequest, CancellationToken cancellationToken = default)
         {
             var successUrl = paymentOrderRequest.GetSuccessUrl();
             successUrl.ThrowIfNullOrEmpty(nameof(successUrl));
@@ -142,8 +144,9 @@ namespace EasyMicroservices.Payments.Stripe.Providers
         /// 
         /// </summary>
         /// <param name="retrieveOrderRequest"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public override async Task<MessageContract<RetrieveOrderResponse>> RetrieveOrderAsync(RetrieveOrderRequest retrieveOrderRequest)
+        public override async Task<MessageContract<RetrieveOrderResponse>> RetrieveOrderAsync(RetrieveOrderRequest retrieveOrderRequest, CancellationToken cancellationToken = default)
         {
             var service = new SessionService(_Client);
             var session = await service.GetAsync(retrieveOrderRequest.Id);
