@@ -26,6 +26,6 @@ namespace EasyMicroservices.Payments.Interfaces
         /// </summary>
         /// <param name="retrieveOrderRequest"></param>
         /// <returns></returns>
-        Task<MessageContract<RetrieveOrderResponse>> RetrieveOrderAsync(RetrieveOrderRequest  retrieveOrderRequest);
+        Task<MessageContract<RetrieveOrderResponse>> RetrieveOrderAsync(RetrieveOrderRequest retrieveOrderRequest);
     }
 }
