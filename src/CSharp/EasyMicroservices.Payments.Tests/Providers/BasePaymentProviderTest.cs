@@ -1,13 +1,10 @@
 ﻿using EasyMicroservices.Domain.DataTypes;
-using EasyMicroservices.Laboratory.Constants;
 using EasyMicroservices.Payments.Interfaces;
 using EasyMicroservices.Payments.Models;
 using EasyMicroservices.Payments.Models.Requests;
 using EasyMicroservices.Payments.Models.Responses;
 using EasyMicroservices.Payments.VirtualServerForTests;
-using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -41,41 +38,12 @@ namespace EasyMicroservices.Payments.Tests.Providers
             PaymentsVirtualTestManager.AppendService(Port, request, response);
         }
 
-        protected async Task<string> GetLastResponse(int port)
-        {
-            HttpClient httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add(RequestTypeHeaderConstants.RequestTypeHeader, RequestTypeHeaderConstants.GiveMeLastFullRequestHeaderValue);
-            var httpResponse = await httpClient.GetAsync($"http://localhost:{port}");
-            return await httpResponse.Content.ReadAsStringAsync();
-        }
-
-        protected async Task<T> HandleResponse<T>(Func<Task<T>> task)
-        {
-            try
-            {
-                return await task();
-            }
-            catch (Exception ex)
-            {
-                try
-                {
-                    var response = await GetLastResponse(Port);
-                    throw new Exception(response, ex);
-                }
-                catch
-                {
-
-                }
-                throw;
-            }
-        }
-
         [Theory]
         [InlineData(1000, CurrencyCodeType.USD)]
         public virtual async Task<PaymentOrderResponse> CreateOrderAsync(decimal amount, CurrencyCodeType currencyCode)
         {
             await OnInitialize(Port);
-            var response = await HandleResponse(() => PaymentProvider.CreateOrderAsync(new PaymentOrderRequest()
+            var response = await PaymentsVirtualTestManager.HandleResponse(Port, () => PaymentProvider.CreateOrderAsync(new PaymentOrderRequest()
             {
                 Orders = new List<PaymentOrder>()
                 {
