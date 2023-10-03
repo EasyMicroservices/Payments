@@ -5,6 +5,8 @@ using EasyMicroservices.Payments.Models.Requests;
 using EasyMicroservices.Payments.Models.Responses;
 using EasyMicroservices.Payments.VirtualServerForTests;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -38,6 +40,11 @@ namespace EasyMicroservices.Payments.Tests.Providers
             PaymentsVirtualTestManager.AppendService(Port, request, response);
         }
 
+        protected string GetSuccessUrl()
+        {
+            return $"http://localhost:{Port}/successurl";
+        }
+
         [Theory]
         [InlineData(1000, CurrencyCodeType.USD)]
         public virtual async Task<PaymentOrderResponse> CreateOrderAsync(decimal amount, CurrencyCodeType currencyCode)
@@ -59,7 +66,7 @@ namespace EasyMicroservices.Payments.Tests.Providers
                      new PaymentUrl()
                      {
                           Type = DataTypes.RequestUrlType.SuccessUrl,
-                          Url = $"http://localhost:{Port}/successurl"
+                          Url = GetSuccessUrl()
                      }
                 }
             }));
@@ -71,6 +78,10 @@ namespace EasyMicroservices.Payments.Tests.Providers
             }));
             Assert.True(retrieveResponse);
             Assert.True(retrieveResponse.Result.Status == DataTypes.PaymentStatusType.Paid);
+
+            HttpClient redirect = new HttpClient();
+            var responseRedirect = await redirect.GetAsync($"http://localhost:{Port}/v1/easymicroservices/successpayment");
+            Assert.True(responseRedirect.RequestMessage.ToString().Contains(GetSuccessUrl()));
             return response;
         }
     }
