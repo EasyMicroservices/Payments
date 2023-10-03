@@ -1,4 +1,5 @@
-﻿using EasyMicroservices.Payments.Models.Requests;
+﻿using EasyMicroservices.Payments.DataTypes;
+using EasyMicroservices.Payments.Models.Requests;
 using EasyMicroservices.Payments.Models.Responses;
 using EasyMicroservices.Payments.PayPal.Contracts.Requests;
 using EasyMicroservices.Payments.PayPal.Contracts.Responses;
@@ -18,6 +19,10 @@ namespace EasyMicroservices.Payments.PayPal.Providers
     /// </summary>
     public class PayPalProvider : BasePaymentsProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public override PaymentServiceType ServiceType { get; } = PaymentServiceType.PayPal;
         string BaseUrl { get; set; }
         /// <summary>
         /// 
