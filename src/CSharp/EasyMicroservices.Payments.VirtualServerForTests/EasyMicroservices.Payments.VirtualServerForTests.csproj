@@ -8,7 +8,7 @@
     </When>
     <Otherwise>
       <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net45</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -17,13 +17,12 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.0.1</Version>
+    <Version>0.0.0.2</Version>
     <Description>Payments message.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
-    <PackageTags>Payments,message,tests</PackageTags>
+    <PackageTags>Payments,message,tests,testtemplate,testtemplates,examples,server,testserver,virtual,virtualserver</PackageTags>
     <PackageProjectUrl>https://github.com/EasyMicroservices/Payments</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
