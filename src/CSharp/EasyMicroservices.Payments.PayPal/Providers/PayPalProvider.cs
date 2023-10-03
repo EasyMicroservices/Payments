@@ -78,5 +78,16 @@ namespace EasyMicroservices.Payments.PayPal.Providers
                 }).ToList()
             };
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="retrieveOrderRequest"></param>
+        /// <returns></returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public override Task<MessageContract<RetrieveOrderResponse>> RetrieveOrderAsync(RetrieveOrderRequest retrieveOrderRequest)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

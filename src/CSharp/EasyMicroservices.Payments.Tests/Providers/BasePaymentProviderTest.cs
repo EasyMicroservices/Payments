@@ -64,6 +64,13 @@ namespace EasyMicroservices.Payments.Tests.Providers
                 }
             }));
             Assert.True(response);
+
+            var retrieveResponse = await PaymentsVirtualTestManager.HandleResponse(Port, () => PaymentProvider.RetrieveOrderAsync(new RetrieveOrderRequest()
+            {
+                Id = response.Result.Id
+            }));
+            Assert.True(retrieveResponse);
+            Assert.True(retrieveResponse.Result.Status == DataTypes.PaymentStatusType.Paid);
             return response;
         }
     }
