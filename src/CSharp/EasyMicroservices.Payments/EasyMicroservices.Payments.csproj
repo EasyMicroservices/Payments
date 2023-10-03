@@ -1,5 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
+  <PropertyGroup>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Authors>EasyMicroservices</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.0.5</Version>
+    <Description>Payments banks.</Description>
+    <Copyright>EasyMicroservices@gmail.com</Copyright>
+    <PackageTags>payments,payment,bank,banks</PackageTags>
+    <PackageProjectUrl>https://github.com/EasyMicroservices/Payments</PackageProjectUrl>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.Payments.xml</DocumentationFile>
+  </PropertyGroup>
+
   <Choose>
     <When Condition="$(SolutionFileName.Contains('Net7'))">
       <PropertyGroup>
@@ -12,20 +26,6 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-  
-  <PropertyGroup>
-    <Platforms>AnyCPU;x64;x86</Platforms>
-    <Authors>EasyMicroservices</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.0.4</Version>
-    <Description>Payments banks.</Description>
-    <Copyright>EasyMicroservices@gmail.com</Copyright>
-    <PackageTags>payments,payment,bank,banks</PackageTags>
-    <PackageProjectUrl>https://github.com/EasyMicroservices/Payments</PackageProjectUrl>
-    <LangVersion>latest</LangVersion>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.Payments.xml</DocumentationFile>
-  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="EasyMicroservices.Domain" Version="0.0.0.1" />

@@ -32,8 +32,6 @@ namespace EasyMicroservices.Payments.VirtualServerForTests
                 throw new KeyNotFoundException(port.ToString());
         }
 
-
-
         public async Task<string> GetLastResponse(int port)
         {
             HttpClient httpClient = new HttpClient();

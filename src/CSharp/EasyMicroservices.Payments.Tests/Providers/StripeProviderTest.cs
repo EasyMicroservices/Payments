@@ -17,7 +17,7 @@ namespace EasyMicroservices.Payments.Tests.Providers
 
         protected override void AppendServices()
         {
-            foreach (var item in StripeTestResource.GetResources())
+            foreach (var item in StripeTestResource.GetResources(GetSuccessUrl()))
             {
                 AppendService(item.Key, item.Value);
             }

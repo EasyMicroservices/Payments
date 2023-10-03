@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EasyMicroservices.Payments.PayPal.Providers
@@ -40,8 +41,9 @@ namespace EasyMicroservices.Payments.PayPal.Providers
         /// 
         /// </summary>
         /// <param name="paymentOrderRequest"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public override async Task<MessageContract<PaymentOrderResponse>> CreateOrderAsync(PaymentOrderRequest paymentOrderRequest)
+        public override async Task<MessageContract<PaymentOrderResponse>> CreateOrderAsync(PaymentOrderRequest paymentOrderRequest, CancellationToken cancellationToken = default)
         {
             Dictionary<string, string> configurationMap = new Dictionary<string, string>
             {
@@ -83,9 +85,10 @@ namespace EasyMicroservices.Payments.PayPal.Providers
         /// 
         /// </summary>
         /// <param name="retrieveOrderRequest"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public override Task<MessageContract<RetrieveOrderResponse>> RetrieveOrderAsync(RetrieveOrderRequest retrieveOrderRequest)
+        public override Task<MessageContract<RetrieveOrderResponse>> RetrieveOrderAsync(RetrieveOrderRequest retrieveOrderRequest, CancellationToken cancellationToken = default)
         {
             throw new System.NotImplementedException();
         }
