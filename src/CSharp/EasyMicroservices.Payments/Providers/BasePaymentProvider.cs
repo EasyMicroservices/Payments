@@ -1,4 +1,5 @@
-﻿using EasyMicroservices.Payments.Interfaces;
+﻿using EasyMicroservices.Payments.DataTypes;
+using EasyMicroservices.Payments.Interfaces;
 using EasyMicroservices.Payments.Models.Requests;
 using EasyMicroservices.Payments.Models.Responses;
 using EasyMicroservices.ServiceContracts;
@@ -20,5 +21,9 @@ namespace EasyMicroservices.Payments.Providers
         /// <param name="paymentOrderRequest"></param>
         /// <returns></returns>
         public abstract Task<MessageContract<PaymentOrderResponse>> CreateOrderAsync(PaymentOrderRequest paymentOrderRequest);
+        /// <summary>
+        /// 
+        /// </summary>
+        public abstract PaymentServiceType ServiceType { get; }
     }
 }

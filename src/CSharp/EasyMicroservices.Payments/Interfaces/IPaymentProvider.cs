@@ -1,4 +1,5 @@
-﻿using EasyMicroservices.Payments.Models.Requests;
+﻿using EasyMicroservices.Payments.DataTypes;
+using EasyMicroservices.Payments.Models.Requests;
 using EasyMicroservices.Payments.Models.Responses;
 using EasyMicroservices.ServiceContracts;
 using System.Threading.Tasks;
@@ -10,6 +11,10 @@ namespace EasyMicroservices.Payments.Interfaces
     /// </summary>
     public interface IPaymentProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public PaymentServiceType ServiceType { get; }
         /// <summary>
         /// 
         /// </summary>

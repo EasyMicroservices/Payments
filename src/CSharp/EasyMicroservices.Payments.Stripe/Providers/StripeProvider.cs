@@ -1,4 +1,5 @@
-﻿using EasyMicroservices.Payments.Models;
+﻿using EasyMicroservices.Payments.DataTypes;
+using EasyMicroservices.Payments.Models;
 using EasyMicroservices.Payments.Models.Requests;
 using EasyMicroservices.Payments.Models.Responses;
 using EasyMicroservices.Payments.Providers;
@@ -19,6 +20,10 @@ namespace EasyMicroservices.Payments.Stripe.Providers
     /// </summary>
     public class StripeProvider : BasePaymentsProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public override PaymentServiceType ServiceType { get; } = PaymentServiceType.Stripe;
         readonly IStripeClient _Client;
         /// <summary>
         /// 
