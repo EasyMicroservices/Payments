@@ -24,6 +24,13 @@ namespace EasyMicroservices.Payments.Providers
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="retrieveOrderRequest"></param>
+        /// <returns></returns>
+        public abstract Task<MessageContract<RetrieveOrderResponse>> RetrieveOrderAsync(RetrieveOrderRequest retrieveOrderRequest);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public abstract PaymentServiceType ServiceType { get; }
     }
 }

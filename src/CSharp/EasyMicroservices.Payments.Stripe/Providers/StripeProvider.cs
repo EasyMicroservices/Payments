@@ -79,6 +79,7 @@ namespace EasyMicroservices.Payments.Stripe.Providers
             var session = await service.CreateAsync(options);
             return new PaymentOrderResponse()
             {
+                Id = session.Id,
                 Urls = new List<Models.PaymentUrl>()
                 {
                     new Models.PaymentUrl()
@@ -135,6 +136,21 @@ namespace EasyMicroservices.Payments.Stripe.Providers
             var priceService = new PriceService(_Client);
             var priceResponse = await priceService.CreateAsync(priceOptions);
             return priceResponse;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="retrieveOrderRequest"></param>
+        /// <returns></returns>
+        public override async Task<MessageContract<RetrieveOrderResponse>> RetrieveOrderAsync(RetrieveOrderRequest retrieveOrderRequest)
+        {
+            var service = new SessionService(_Client);
+            var session = await service.GetAsync(retrieveOrderRequest.Id);
+            return new RetrieveOrderResponse()
+            {
+                Status = session.PaymentStatus.Equals("paid", StringComparison.OrdinalIgnoreCase) ? PaymentStatusType.Paid : PaymentStatusType.UnPaid
+            };
         }
     }
 }

@@ -10,6 +10,10 @@ namespace EasyMicroservices.Payments.Models.Responses
         /// <summary>
         /// 
         /// </summary>
+        public string Id { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public List<PaymentUrl> Urls { get; set; }
     }
 }
